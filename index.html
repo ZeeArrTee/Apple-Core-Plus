@@ -250,6 +250,16 @@
             min-height: calc(100dvh - 58px);
             display: flex;
             align-items: center;
+            width: 100%;
+        }
+
+        .feature-band--bleed {
+            padding: 0;
+            background: #d5e0d8;
+        }
+
+        .feature-band--bleed .feature-panel {
+            background: transparent;
         }
 
         .feature-panel {
@@ -1234,7 +1244,8 @@
             </div>
         </section>
 
-<section class="feature-band wrap" style="background-color: #D5E0D8; padding: 0;">
+<section class="feature-band feature-band--bleed">
+    <div class="wrap">
     <div class="feature-panel" style="display: flex; align-items: center; gap: 70px; padding: 60px 60px; font-family: 'Georgia', serif;">
         <div class="feature-copy" style="flex: 2; color: #2d5a52;">
             <p style="font-size: 22px; line-height: 1.6; margin-bottom: 15px;"><strong>Apple Core+</strong> makes it easy to core fruits and veggies with a simple press and twist—no buttons, no hassle.</p>
@@ -1252,6 +1263,7 @@
         <div class="feature-art" aria-hidden="true" style="flex: 1; text-align: center; background: none;">
             <img src="Pictures/Corer-Standing-up-removebg-preview.png" alt="Apple Core+ product image" style="width: 120%; max-width: 200px; height: auto; display: block; margin: 0 auto;">
         </div>
+    </div>
     </div>
 </section>
 
