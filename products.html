@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Apple Core+</title>
+    <style>
+        :root {
+            --green: #2f613d;
+            --green-dark: #21452b;
+            --green-soft: #dbe4dc;
+            --cream: #f7f4ee;
+            --ink: #1f3327;
+            --muted: #5a6f61;
+            --shadow: 0 18px 40px rgba(18, 38, 23, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: var(--muted);
+            background: #fafaf8;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 30px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            background: var(--green);
+            border-bottom: 0;
+            box-shadow: none;
+        }
+
+        .topbar .wrap {
+            min-height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .icon-btn,
+        .cart {
+            color: var(--green);
+            font-size: 2rem;
+            line-height: 1;
+            flex: 0 0 auto;
+        }
+
+        .menu-icon {
+            display: grid;
+            gap: 7px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 38px;
+            height: 7px;
+            border-radius: 99px;
+            background: currentColor;
+        }
+
+        .cart-icon {
+            position: relative;
+            width: 46px;
+            height: 42px;
+        }
+
+        .cart-icon::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            width: 29px;
+            height: 20px;
+            border-radius: 2px 2px 6px 6px;
+            background: currentColor;
+            transform: skewX(-10deg);
+        }
+
+        .cart-icon::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 3px;
+            width: 10px;
+            height: 26px;
+            border-left: 5px solid currentColor;
+            border-bottom: 5px solid currentColor;
+            transform: rotate(-8deg);
+        }
+
+        .cart-icon span::before,
+        .cart-icon span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .cart-icon span::before {
+            left: 16px;
+        }
+
+        .cart-icon span::after {
+            right: 8px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(18px, 3.2vw, 40px);
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #fff;
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .nav a {
+            padding: 10px 0;
+        }
+
+        .crumb {
+            color: var(--green-dark);
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
+            margin: 8px 0 34px;
+        }
+
+        .product {
+            background: #fff;
+            padding: 40px 0 60px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .gallery {
+            padding-top: 2px;
+        }
+
+        .main-shot {
+            height: 320px;
+            border: 1px solid rgba(33, 69, 43, 0.08);
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+            background: #f4efe7;
+        }
+
+        .main-shot img,
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .main-shot img {
+            object-position: 58% center;
+        }
+
+        .thumb-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .thumb {
+            height: 220px;
+            border: 1px solid rgba(33, 69, 43, 0.08);
+            position: relative;
+            overflow: hidden;
+            background: #edf2ea;
+        }
+
+        .details {
+            padding: 4px 0 0 12px;
+        }
+
+        .details h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            font-size: clamp(3rem, 5.2vw, 5.2rem);
+            line-height: 0.92;
+            margin-bottom: 14px;
+        }
+
+        .details p,
+        .details li {
+            color: var(--green-dark);
+            font-size: 0.98rem;
+            line-height: 1.28;
+        }
+
+        .price {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            font-size: clamp(2.8rem, 4.8vw, 4.4rem);
+            margin: 18px 0 8px;
+        }
+
+        .stars {
+            color: #f2b52c;
+            font-size: 1.45rem;
+            margin-bottom: 18px;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin: 18px 0 28px;
+        }
+
+        .qty {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(33, 69, 43, 0.45);
+            color: var(--green-dark);
+            font-size: 1.4rem;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 26px;
+        }
+
+        .btn {
+            padding: 17px 26px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            font-size: 1rem;
+        }
+
+        .btn.primary {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid var(--green);
+            color: var(--green);
+        }
+
+        .tabbar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 14px 0 20px;
+            border-bottom: 1px solid rgba(33, 69, 43, 0.25);
+        }
+
+        .tabbar div {
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green-dark);
+            font-size: 1.52rem;
+            padding-bottom: 14px;
+        }
+
+        .product-copy h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green-dark);
+            font-size: 1.58rem;
+            margin: 26px 0 10px;
+        }
+
+        .product-copy ul {
+            margin-left: 24px;
+        }
+
+        .footer {
+            background: var(--green);
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 28px;
+            padding: 24px 0 20px;
+        }
+
+        .footer h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.45rem;
+            text-decoration: underline;
+            margin-bottom: 8px;
+        }
+
+        .footer input {
+            width: 260px;
+            max-width: 100%;
+            border: none;
+            border-radius: 999px;
+            padding: 11px 16px;
+            margin: 6px 0;
+        }
+
+        .newsletter-field {
+            display: block;
+            position: relative;
+            width: 260px;
+            max-width: 100%;
+        }
+
+        .newsletter-field span {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--green);
+            transform: translateY(-50%);
+        }
+
+        .newsletter-field span::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-top: 3px solid #fff;
+            border-right: 3px solid #fff;
+            transform: rotate(45deg);
+        }
+
+        .socials {
+            display: grid;
+            gap: 8px;
+            align-items: start;
+            font-size: 1rem;
+            line-height: 1.35;
+        }
+
+        .socials span {
+            color: #fff;
+            background: none;
+            border-radius: 0;
+            font-size: inherit;
+            font-weight: 400;
+            text-transform: none;
+        }
+
+        .copyright {
+            background: #dce4dd;
+            color: var(--green-dark);
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.74rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 980px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details {
+                padding-left: 12px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .wrap {
+                width: min(100% - 18px, 1180px);
+            }
+
+            .nav {
+                gap: 14px;
+                font-size: 0.82rem;
+            }
+
+            .btn-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .thumb-row {
+                grid-template-columns: 1fr;
+            }
+
+            .details p,
+            .details li {
+                font-size: 0.98rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('header-container').innerHTML = html);
+    </script>
+
+    <main>
+        <section class="product wrap" id="products">
+            <div class="product-grid">
+                <div class="gallery">
+                    <div class="main-shot" aria-hidden="true">
+                        <img src="Pictures/Screenshot 2026-05-14 022520.png" alt="Apple Core+ hero product image">
+                    </div>
+                    <div class="thumb-row" aria-hidden="true">
+                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045321.png" alt="Apple Core+ product angle view"></div>
+                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045333.png" alt="Apple Core+ product front view"></div>
+                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045359.png" alt="Apple Core+ product detail view"></div>
+                    </div>
+                </div>
+
+                <div class="details">
+                    <h2>Apple Core+</h2>
+                    <p>Apple Core+ is your go-to tool for quick, clean, and easy fruit and veggie prep. With a simple press and twist, it cores produce in seconds no mess, no hassle. Designed for everyday cooks, curious kids, and busy kitchens, it's a smarter way to prep.</p>
+                    <div class="price">$39.99</div>
+                    <div class="stars">★★★★★ <span style="color: var(--green-dark); text-decoration: underline; font-size: 1rem; vertical-align: middle; margin-left: 4px;">299 REVIEWS</span></div>
+                    <div class="btn-row">
+                        <a class="btn primary" href="https://www.signaturecoreyllc.com/">Preorder Now</a>
+                    </div>
+
+                    <div class="tabbar">
+                        <div>Description</div>
+                        <div>Reviews (299)</div>
+                    </div>
+
+                    <div class="product-copy">
+                        <p><strong>Apple Core+</strong> is the next-generation kitchen tool designed to core fruits and vegetables quickly, safely, and cleanly with just a press and twist. Built for every kitchen, from family homes to professional restaurants, this tool offers a no-fuss, mess-free experience that's fun for kids and efficient for chefs. Whether you're prepping apples for pie or vegetables for lunch, Apple Core+ simplifies the job with a satisfying pop that ejects the core in seconds.</p>
+
+                        <h3>Product Details:</h3>
+                        <ul>
+                            <li>Twist-and-Release Core Removal</li>
+                            <li>Ergonomic, Comfortable Grip</li>
+                            <li>Mess-Free Design</li>
+                            <li>Universal Fit</li>
+                            <li>Durable, High-Quality Materials</li>
+                        </ul>
+
+                        <h3>Parts:</h3>
+                        <p><strong>1. Comfort Grip Handle</strong><br>Non-slip design with a red accent tip. Soft yet firm for controlled movement. Suitable for both adult and child hands.</p>
+                        <p style="margin-top: 18px;"><strong>2. Stainless Steel Coring Barrel</strong><br>Sharp, food-grade edge. Durable and rust-resistant. Designed to cut through fruits and vegetables with ease.</p>
+                        <p style="margin-top: 18px;"><strong>3. Twist Mechanism</strong><br>Allows you to manually twist the device to extract the core. Simple and intuitive - no buttons or complex pieces.</p>
+                        <p style="margin-top: 18px;"><strong>4. Universal Fit</strong><br>Perfect for apples, pears, tomatoes, bell peppers, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('footer-container').innerHTML = html);
+    </script>
+</body>
+</html>

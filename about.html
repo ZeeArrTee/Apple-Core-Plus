@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Apple Core+</title>
+    <style>
+        :root {
+            --green: #2f613d;
+            --green-dark: #21452b;
+            --green-soft: #dbe4dc;
+            --cream: #f7f4ee;
+            --ink: #1f3327;
+            --muted: #5a6f61;
+            --shadow: 0 18px 40px rgba(18, 38, 23, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: var(--muted);
+            background: #fafaf8;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 30px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            background: var(--green);
+            border-bottom: 0;
+            box-shadow: none;
+        }
+
+        .topbar .wrap {
+            min-height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .icon-btn,
+        .cart {
+            color: var(--green);
+            font-size: 2rem;
+            line-height: 1;
+            flex: 0 0 auto;
+        }
+
+        .menu-icon {
+            display: grid;
+            gap: 7px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 38px;
+            height: 7px;
+            border-radius: 99px;
+            background: currentColor;
+        }
+
+        .cart-icon {
+            position: relative;
+            width: 46px;
+            height: 42px;
+        }
+
+        .cart-icon::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            width: 29px;
+            height: 20px;
+            border-radius: 2px 2px 6px 6px;
+            background: currentColor;
+            transform: skewX(-10deg);
+        }
+
+        .cart-icon::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 3px;
+            width: 10px;
+            height: 26px;
+            border-left: 5px solid currentColor;
+            border-bottom: 5px solid currentColor;
+            transform: rotate(-8deg);
+        }
+
+        .cart-icon span::before,
+        .cart-icon span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .cart-icon span::before {
+            left: 16px;
+        }
+
+        .cart-icon span::after {
+            right: 8px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(18px, 3.2vw, 40px);
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #fff;
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .nav a {
+            padding: 10px 0;
+        }
+
+        .story {
+            background: #fff;
+            padding: 40px 0 60px;
+        }
+
+        .story-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .polaroid {
+            position: relative;
+            width: min(100%, 480px);
+            margin: 0 auto;
+            padding: 14px;
+            background: #fff;
+            box-shadow: 0 12px 32px rgba(18, 38, 23, 0.1);
+            transform: none;
+        }
+
+        .polaroid::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            width: 112px;
+            height: 26px;
+            transform: translateX(-50%);
+            background: rgba(225, 211, 181, 0.8);
+            border-radius: 3px;
+        }
+
+        .story-text {
+            background: #f5f3f0;
+            min-height: 420px;
+            padding: 60px 32px 32px;
+        }
+
+        .story-text h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            text-align: center;
+            font-size: clamp(2.5rem, 5.2vw, 4.4rem);
+            line-height: 0.92;
+            margin-bottom: 20px;
+        }
+
+        .story-text p {
+            color: var(--green-dark);
+            text-align: center;
+            max-width: 50ch;
+            margin: 0 auto 16px;
+            font-size: 1.02rem;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+
+        .story-mid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .label-bar {
+            display: inline-block;
+            background: var(--green);
+            color: #fff;
+            padding: 12px 26px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+        }
+
+        .how p {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 16px;
+            color: var(--green-dark);
+            font-size: 1rem;
+            line-height: 1.28;
+        }
+
+        .photo-card {
+            width: min(100%, 480px);
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 16px 40px rgba(18, 38, 23, 0.14);
+            padding: 12px;
+            transform: rotate(6deg);
+            position: relative;
+        }
+
+        .photo-card::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96px;
+            height: 26px;
+            background: rgba(227, 214, 184, 0.85);
+        }
+
+        .still-life {
+            height: 286px;
+            background:
+                radial-gradient(circle at 18% 78%, #93c559 0%, #74a93a 18%, transparent 19%),
+                radial-gradient(circle at 94% 84%, #ffd671 0%, #f0a02d 18%, transparent 19%),
+                radial-gradient(circle at 58% 42%, #f8d25b 0%, #eb9728 15%, #b93d1d 42%, #7d1d10 100%),
+                linear-gradient(180deg, #e8ede8 0%, #f5efe5 45%, #f0dfd0 46%, #f8efe5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .still-life::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 46px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.58), rgba(255,255,255,0));
+        }
+
+        .still-life .red-tool {
+            position: absolute;
+            left: 52%;
+            bottom: 26px;
+            width: 116px;
+            height: 180px;
+            transform: translateX(-50%);
+        }
+
+        .still-life .red-tool::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 82px;
+            height: 138px;
+            border-radius: 22px 22px 16px 16px;
+            background: linear-gradient(180deg, #cd2b15 0%, #9a1f15 100%);
+        }
+
+        .still-life .red-tool::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 108px;
+            transform: translateX(-50%);
+            width: 94px;
+            height: 26px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #bc1e16 0%, #8e1610 100%);
+        }
+
+        .mission {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mission h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            text-align: center;
+            font-size: clamp(3.2rem, 6.2vw, 5.3rem);
+            line-height: 0.86;
+        }
+
+        .mission-copy {
+            color: var(--green-dark);
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.28;
+            max-width: 44ch;
+            justify-self: center;
+        }
+
+        .footer {
+            background: var(--green);
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 28px;
+            padding: 24px 0 20px;
+        }
+
+        .footer h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.45rem;
+            text-decoration: underline;
+            margin-bottom: 8px;
+        }
+
+        .footer input {
+            width: 260px;
+            max-width: 100%;
+            border: none;
+            border-radius: 999px;
+            padding: 11px 16px;
+            margin: 6px 0;
+        }
+
+        .newsletter-field {
+            display: block;
+            position: relative;
+            width: 260px;
+            max-width: 100%;
+        }
+
+        .newsletter-field span {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--green);
+            transform: translateY(-50%);
+        }
+
+        .newsletter-field span::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-top: 3px solid #fff;
+            border-right: 3px solid #fff;
+            transform: rotate(45deg);
+        }
+
+        .socials {
+            display: grid;
+            gap: 8px;
+            align-items: start;
+            font-size: 1rem;
+            line-height: 1.35;
+        }
+
+        .socials span {
+            color: #fff;
+            background: none;
+            border-radius: 0;
+            font-size: inherit;
+            font-weight: 400;
+            text-transform: none;
+        }
+
+        .copyright {
+            background: #dce4dd;
+            color: var(--green-dark);
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.74rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 980px) {
+            .story-top,
+            .story-mid,
+            .mission,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .wrap {
+                width: min(100% - 18px, 1180px);
+            }
+
+            .nav {
+                gap: 14px;
+                font-size: 0.82rem;
+            }
+
+            .story-text {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .story p {
+                font-size: 0.98rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('header-container').innerHTML = html);
+    </script>
+
+    <main>
+        <section class="story wrap" id="about-more" style="padding: 0 0 60px;">
+            <div class="story-top" style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 28px; position: relative;">
+                <div class="polaroid" aria-hidden="true" style="justify-self: end; width: 420px; background: #fff; padding: 12px; border-radius: 6px; border: 12px solid #fff; box-shadow: 0 24px 48px rgba(18,38,23,0.16); transform: rotate(-6deg); position: relative; margin-right: 0 px;">
+                    <img src="Pictures/Cheryl_image.JPG" alt="Cheryl Bradley, inventor of Apple Core+" style="width: 100%; height: auto; object-fit: cover; display: block; border-radius: 4px;">
+                    <div style="position: absolute; left: 50%; top: -12px; transform: translateX(-50%); width: 96px; height: 26px; background: rgba(227,214,184,0.9); border-radius: 4px;"></div>
+                </div>
+
+                <div class="story-text" style="background: #d9e6dd; padding: 48px 40px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; position: relative; min-height: 260px;">
+                    <h2 style="font-family: Georgia, 'Times New Roman', serif; color: var(--green); font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: 1; margin: 0 0 12px; text-transform: uppercase;">Meet the Heart Behind the Core</h2>
+                    <p style="font-size: 1.1rem; color: var(--green-dark); max-width: 48ch; margin: 0;">Invented by <strong>Cheryl Bradley</strong>, Apple Core+ brings simplicity, safety, and joy to every kitchen.</p>
+                    <div class="arrow" aria-hidden="true" style="position: absolute; right: 28px; bottom: -28px; width: 56px; height: 56px; transform: rotate(35deg);">
+                        <svg viewBox="0 0 64 64" width="56" height="56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 24c14 16 24 24 40 32" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="story wrap" style="padding: 0;">
+            <div class="story-mid how" style="align-items: start; gap: 48px; margin-top: 34px;">
+                <div style="text-align: center; padding-top: 4px;">
+                    <div class="label-bar" style="display: block; width: fit-content; min-width: 280px; margin: 0 auto 28px; text-align: center; font-size: 1.55rem; letter-spacing: 0.03em; padding: 10px 24px;">HOW IT STARTED</div>
+                    <p style="max-width: 420px; margin: 0 auto 18px; font-size: 1.15rem; line-height: 1.28; color: var(--green-dark);">It all began with a simple frustration in the kitchen.</p>
+                    <p style="max-width: 420px; margin: 0 auto 18px; font-size: 1.15rem; line-height: 1.28; color: var(--green-dark);">As a home cook and mom, <strong>Cheryl Bradley</strong> was tired of messy, time-consuming prep tools especially when it came to coring fruits and vegetables. She needed something better. Something faster, cleaner, and easy enough for her kids to help with.</p>
+                    <p style="max-width: 420px; margin: 0 auto; font-size: 1.15rem; line-height: 1.28; color: var(--green-dark);">So she sketched an idea. Then she built a prototype. And just like that, Apple Core+ was born a sleek, intuitive kitchen tool with an automatic release that made prep feel less like a chore and more like a joy.</p>
+                </div>
+                <div class="photo-card" aria-hidden="true" style="background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%); padding: 20px; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12); transform: rotate(4deg); display: flex; align-items: center; justify-content: center; width: 100%; max-width: 320px; height: 500px; border-radius: 4px; margin-left: auto; margin-right: 0;">
+                    <div class="still-life" style="width: 100%; height: 100%; background-color: #f9f9f9; position: relative; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="Pictures/OpenAI Playground 2026-05-14 at 04.36.49.png" alt="Apple Core+ tool" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mission" style="grid-template-columns: 0.92fr 0.24fr 1.1fr; align-items: start; gap: 12px; margin-top: 42px; margin-bottom: 64px;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 8px;">
+                    <h2 style="text-align: center; margin: 0; font-size: clamp(3.4rem, 6.2vw, 5.6rem); line-height: 0.88;">
+                        OUR<br>MISSION
+                    </h2>
+                    <svg viewBox="0 0 260 24" width="240" height="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display: block;">
+                        <path d="M18 15c44-13 104-13 224 0" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div aria-hidden="true" style="display: flex; align-items: flex-start; justify-content: center; width: 64px; height: 64px; padding-top: 8px;">
+
+                </div>
+                <div class="mission-copy" style="max-width: 34ch; justify-self: center; font-size: 1rem; line-height: 1.26; padding-top: 4px;">
+                    <p>Our mission is to make everyday kitchen tasks simpler, safer, and more satisfying through beautifully designed tools that inspire confidence, creativity, and joy.</p>
+                    <p style="margin-top: 22px;">What started as a solution for her own kitchen quickly grew into a mission to help families, schools, and chefs everywhere cook with ease.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('footer-container').innerHTML = html);
+    </script>
+</body>
+</html>

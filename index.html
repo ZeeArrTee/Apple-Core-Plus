@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Core+ | Website</title>
+    <style>
+        :root {
+            --green: #2f613d;
+            --green-dark: #21452b;
+            --green-soft: #dbe4dc;
+            --cream: #f7f4ee;
+            --ink: #1f3327;
+            --muted: #5a6f61;
+            --shadow: 0 18px 40px rgba(18, 38, 23, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 58px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: var(--muted);
+            background: #fafaf8;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 30px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            background: var(--green);
+            border-bottom: 0;
+            box-shadow: none;
+        }
+
+        .topbar .wrap {
+            min-height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .icon-btn,
+        .cart {
+            color: var(--green);
+            font-size: 2rem;
+            line-height: 1;
+            flex: 0 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(18px, 3.2vw, 40px);
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #fff;
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .nav a {
+            padding: 10px 0;
+        }
+
+        .hero {
+            padding: 0;
+            background: linear-gradient(180deg, #fafaf8 0%, #f4f1ea 100%);
+            min-height: calc(100vh - 58px);
+            min-height: calc(100dvh - 58px);
+        }
+
+        .hero-media {
+            width: 100%;
+            margin: 0 auto;
+            line-height: 0;
+            border-radius: 0;
+            background: #efe9de;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+        }
+
+        .preorder-link {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 176px;
+            padding: 14px 22px;
+            border-radius: 999px;
+            background: rgba(47, 97, 61, 0.92);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            box-shadow: 0 12px 26px rgba(18, 38, 23, 0.22);
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .preorder-link:hover {
+            background: rgba(33, 69, 43, 0.96);
+            transform: translateY(-2px);
+        }
+
+        .hero-banner {
+            width: 100%;
+            margin: 0 auto;
+            background: var(--green);
+            color: #fff;
+            padding: 34px 20px 36px;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', serif;
+            box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.08) inset;
+            border-radius: 0;
+        }
+
+        .hero-banner h2 {
+            font-size: clamp(2.2rem, 4vw, 3.9rem);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .hero-banner p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+            line-height: 1.15;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .statement {
+            background: var(--green);
+            color: #fff;
+            text-align: center;
+            padding: 24px 18px 28px;
+        }
+
+        .statement h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(2.4rem, 5vw, 4.4rem);
+            margin-bottom: 4px;
+        }
+
+        .statement p {
+            font-size: 1rem;
+            line-height: 1.18;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            text-align: center;
+            font-size: clamp(2.3rem, 5vw, 4rem);
+            margin-bottom: 30px;
+        }
+
+        .why {
+            background: #fff;
+            padding: 44px 0 48px;
+            min-height: calc(100vh - 58px);
+            min-height: calc(100dvh - 58px);
+            display: flex;
+            align-items: center;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 10px 12px;
+        }
+
+        .why-icon {
+            width: 112px;
+            height: 112px;
+            margin: 0 auto 18px;
+            display: grid;
+            place-items: center;
+        }
+
+        .why-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .why-card h3 {
+            color: var(--green-dark);
+            font-size: 0.98rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
+        }
+
+        .why-card p {
+            max-width: 280px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.22;
+        }
+
+        .feature-band {
+            padding: 16px 0 44px;
+            min-height: calc(100vh - 58px);
+            min-height: calc(100dvh - 58px);
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-panel {
+            background: #f0f4f0;
+            padding: 48px 50px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .feature-copy p {
+            font-size: 1.08rem;
+            line-height: 1.24;
+            margin-bottom: 16px;
+            color: var(--green-dark);
+            max-width: 44ch;
+        }
+
+        .feature-copy h4 {
+            color: var(--green-dark);
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 2.1rem;
+            margin: 20px 0 10px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 0 0 26px;
+            color: var(--green-dark);
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 24px;
+            margin: 10px 0;
+            font-size: 0.98rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .feature-end {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: var(--green-dark);
+        }
+
+        .feature-art {
+            min-height: 390px;
+            position: relative;
+        }
+
+        .tool {
+            position: absolute;
+            right: 90px;
+            top: 20px;
+            width: 112px;
+            height: 346px;
+        }
+
+        .tool::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 106px;
+            height: 168px;
+            border-radius: 24px 24px 20px 20px;
+            background: linear-gradient(180deg, #f15d2b 0%, #d94e25 100%);
+        }
+
+        .tool::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 130px;
+            transform: translateX(-50%);
+            width: 122px;
+            height: 38px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #f07834 0%, #eb672a 100%);
+        }
+
+        .tool-shaft {
+            position: absolute;
+            left: 50%;
+            top: 198px;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 170px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #a68f5a 0%, #6d5524 100%);
+            box-shadow: 0 12px 12px rgba(0, 0, 0, 0.16);
+        }
+
+        .story {
+            background: #fff;
+            padding: 40px 0 60px;
+        }
+
+        .story-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .polaroid {
+            position: relative;
+            width: min(100%, 480px);
+            margin: 0 auto;
+            padding: 14px;
+            background: #fff;
+            box-shadow: 0 12px 32px rgba(18, 38, 23, 0.1);
+            transform: none;
+        }
+
+        .polaroid::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            width: 112px;
+            height: 26px;
+            transform: translateX(-50%);
+            background: rgba(225, 211, 181, 0.8);
+            border-radius: 3px;
+        }
+
+        .portrait {
+            height: 402px;
+            background:
+                radial-gradient(circle at 47% 22%, #251f20 0%, #1a1516 10%, transparent 11%),
+                radial-gradient(circle at 50% 30%, #ce9f74 0 6%, #9d6f47 7% 12%, transparent 13%),
+                radial-gradient(circle at 50% 32%, #d8ab7d 0 11%, #8d5d3b 12% 13%, transparent 14%),
+                radial-gradient(circle at 40% 44%, #4d4f58 0 24%, transparent 25%),
+                radial-gradient(circle at 56% 49%, #2f2e33 0 12%, transparent 13%),
+                linear-gradient(135deg, #efe3cf 0%, #c9bbb0 48%, #c2b8aa 100%);
+            border: 10px solid #fff;
+        }
+
+        .story-text {
+            background: #f5f3f0;
+            min-height: 420px;
+            padding: 60px 32px 32px;
+        }
+
+        .story-text h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            text-align: center;
+            font-size: clamp(2.5rem, 5.2vw, 4.4rem);
+            line-height: 0.92;
+            margin-bottom: 20px;
+        }
+
+        .story-text p {
+            color: var(--green-dark);
+            text-align: center;
+            max-width: 50ch;
+            margin: 0 auto 16px;
+            font-size: 1.02rem;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+
+        .story-mid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .label-bar {
+            display: inline-block;
+            background: var(--green);
+            color: #fff;
+            padding: 12px 26px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+        }
+
+        .how p {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 16px;
+            color: var(--green-dark);
+            font-size: 1rem;
+            line-height: 1.28;
+        }
+
+        .still-life {
+            height: 300px;
+            background:
+                radial-gradient(circle at 18% 78%, #93c559 0%, #74a93a 18%, transparent 19%),
+                radial-gradient(circle at 94% 84%, #ffd671 0%, #f0a02d 18%, transparent 19%),
+                radial-gradient(circle at 58% 42%, #f8d25b 0%, #eb9728 15%, #b93d1d 42%, #7d1d10 100%),
+                linear-gradient(180deg, #e8ede8 0%, #f5efe5 45%, #f0dfd0 46%, #f8efe5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .still-life::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 46px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.58), rgba(255,255,255,0));
+        }
+
+        .still-life .red-tool {
+            position: absolute;
+            left: 52%;
+            bottom: 26px;
+            width: 116px;
+            height: 180px;
+            transform: translateX(-50%);
+        }
+
+        .still-life .red-tool::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 82px;
+            height: 138px;
+            border-radius: 22px 22px 16px 16px;
+            background: linear-gradient(180deg, #cd2b15 0%, #9a1f15 100%);
+        }
+
+        .still-life .red-tool::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 108px;
+            transform: translateX(-50%);
+            width: 94px;
+            height: 26px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #bc1e16 0%, #8e1610 100%);
+        }
+
+        .mission {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mission h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            text-align: center;
+            font-size: clamp(3.2rem, 6.2vw, 5.3rem);
+            line-height: 0.86;
+        }
+
+        .mission-copy {
+            color: var(--green-dark);
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.28;
+            max-width: 44ch;
+            justify-self: center;
+        }
+
+        .product {
+            background: #fff;
+            padding: 20px 0 60px;
+        }
+
+        .crumb {
+            color: var(--green-dark);
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
+            margin: 8px 0 34px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .gallery {
+            padding-top: 2px;
+        }
+
+        .main-shot {
+            height: 320px;
+            border: 1px solid rgba(33, 69, 43, 0.08);
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+            background: #f4efe7;
+        }
+
+        .main-shot img,
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .thumb-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .thumb {
+            height: 220px;
+            border: 1px solid rgba(33, 69, 43, 0.08);
+            position: relative;
+            overflow: hidden;
+            background: #edf2ea;
+        }
+
+        .details {
+            padding: 4px 0 0 12px;
+            border-left: 3px solid var(--green);
+        }
+
+        .details h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            font-size: clamp(3rem, 5.2vw, 5.2rem);
+            line-height: 0.92;
+            margin-bottom: 14px;
+        }
+
+        .details p,
+        .details li {
+            color: var(--green-dark);
+            font-size: 0.98rem;
+            line-height: 1.28;
+        }
+
+        .price {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            font-size: clamp(2.8rem, 4.8vw, 4.4rem);
+            margin: 18px 0 8px;
+        }
+
+        .stars {
+            color: #f2b52c;
+            font-size: 1.45rem;
+            margin-bottom: 18px;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin: 18px 0 28px;
+        }
+
+        .qty {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(33, 69, 43, 0.45);
+            color: var(--green-dark);
+            font-size: 1.4rem;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 26px;
+        }
+
+        .btn {
+            padding: 17px 26px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            font-size: 1rem;
+        }
+
+        .btn.primary {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid var(--green);
+            color: var(--green);
+        }
+
+        .tabbar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 14px 0 20px;
+            border-bottom: 1px solid rgba(33, 69, 43, 0.25);
+        }
+
+        .tabbar div {
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green-dark);
+            font-size: 1.52rem;
+            padding-bottom: 14px;
+        }
+
+        .product-copy h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green-dark);
+            font-size: 1.58rem;
+            margin: 26px 0 10px;
+        }
+
+        .product-copy ul {
+            margin-left: 24px;
+        }
+
+        .design {
+            background: #fff;
+            padding: 16px 0 48px;
+            min-height: calc(100vh - 58px);
+            min-height: calc(100dvh - 58px);
+        }
+
+        .design-hero {
+            padding: 0;
+            overflow-x: clip;
+        }
+
+        .design-hero > .wrap {
+            background: #cfdccf;
+            padding: 32px 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .design-hero h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            text-align: center;
+            color: var(--green-dark);
+            font-size: clamp(2.8rem, 5.8vw, 5.2rem);
+            margin: 8px 0 30px;
+        }
+
+        .design-grid {
+            display: grid;
+            grid-template-columns: minmax(320px, 0.92fr) minmax(360px, 1.08fr);
+            gap: 40px;
+            place-items: center;
+            min-height: 500px;
+        }
+
+        .design-hero-grid {
+            grid-template-columns: 1fr;
+            min-height: 430px;
+        }
+
+        .tool-stage {
+            position: relative;
+            min-height: 360px;
+            place-self: center;
+        }
+
+        .tool-stage img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: clamp(108px, 11vw, 138px);
+            height: auto;
+            display: block;
+            z-index: 0;
+        }
+
+        .tool-core {
+            position: absolute;
+            left: 50%;
+            top: 8px;
+            transform: translateX(-50%);
+            width: 96px;
+            height: 318px;
+        }
+
+        .tool-core::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 96px;
+            height: 154px;
+            border-radius: 22px 22px 18px 18px;
+            background: linear-gradient(180deg, #f05a28 0%, #dc4319 100%);
+        }
+
+        .tool-core::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 124px;
+            transform: translateX(-50%);
+            width: 116px;
+            height: 38px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #f16b31 0%, #e14c20 100%);
+        }
+
+        .tool-shaft {
+            position: absolute;
+            left: 50%;
+            top: 162px;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 164px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #b59c61 0%, #6f561d 100%);
+            box-shadow: 0 8px 14px rgba(0,0,0,0.14);
+        }
+
+        .label {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--green-dark);
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.1;
+            width: max-content;
+        }
+
+        .label::after {
+            content: '';
+            display: block;
+            flex: 0 0 142px;
+            height: 1px;
+            background: rgba(33, 69, 43, 0.45);
+        }
+
+        .label.left-top { left: 18px; top: 110px; flex-direction: row-reverse; }
+        .label.left-bottom { left: 18px; top: 248px; flex-direction: row-reverse; }
+        .label.right-top { right: 18px; top: 128px; text-align: right; }
+        .label.right-bottom { right: 18px; top: 270px; text-align: right; }
+
+        .label.right-top::after,
+        .label.right-bottom::after {
+            background: rgba(33, 69, 43, 0.45);
+        }
+
+        .design-story {
+            width: 100%;
+            padding: 56px 0 0;
+            background: #fff;
+        }
+
+        .design-story h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            text-align: center;
+            font-size: clamp(2.6rem, 5vw, 4.4rem);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .design-story-grid {
+            display: grid;
+            grid-template-columns: minmax(240px, 0.9fr) minmax(280px, 1.1fr);
+            gap: 14px;
+            align-items: center;
+        }
+
+        .design-text {
+            color: var(--green-dark);
+            font-size: 0.98rem;
+            line-height: 1.26;
+            text-align: center;
+            padding: 0 12px;
+        }
+
+        .story-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            margin: 0;
+            gap: 18px;
+            color: var(--green-dark);
+        }
+
+        .story-content p {
+            max-width: 34ch;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+
+        .story-spacing {
+            margin-top: 0;
+        }
+
+        .shop-button {
+            display: inline-block;
+            padding: 15px 32px;
+            border: 1px solid var(--green-dark);
+            border-radius: 999px;
+            color: var(--green-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            background: #fff;
+        }
+
+        .spread-image-wrapper {
+            width: min(100%, 420px);
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            background: rgba(255,255,255,0.72);
+            border: 1px solid rgba(33, 69, 43, 0.12);
+            border-radius: 12px;
+            box-shadow: 0 10px 24px rgba(18, 38, 23, 0.08);
+        }
+
+        .spread-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .review-shell {
+            background: #f0f4f0;
+            margin-top: 48px;
+            padding: 40px 0 50px;
+        }
+
+        .review-shell h2 {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--green);
+            text-align: center;
+            font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+            margin-bottom: 22px;
+            font-weight: 700;
+        }
+
+        .photo-card {
+            width: min(100%, 480px);
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 16px 40px rgba(18, 38, 23, 0.14);
+            padding: 12px;
+            transform: rotate(6deg);
+            position: relative;
+        }
+
+        .photo-card::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96px;
+            height: 26px;
+            background: rgba(227, 214, 184, 0.85);
+        }
+
+        .still-life {
+            height: 286px;
+            background:
+                radial-gradient(circle at 18% 78%, #93c559 0%, #74a93a 18%, transparent 19%),
+                radial-gradient(circle at 94% 84%, #ffd671 0%, #f0a02d 18%, transparent 19%),
+                radial-gradient(circle at 58% 42%, #f8d25b 0%, #eb9728 15%, #b93d1d 42%, #7d1d10 100%),
+                linear-gradient(180deg, #e8ede8 0%, #f5efe5 45%, #f0dfd0 46%, #f8efe5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .still-life::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 46px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.58), rgba(255,255,255,0));
+        }
+
+        .still-life .red-tool {
+            position: absolute;
+            left: 52%;
+            bottom: 26px;
+            width: 116px;
+            height: 180px;
+            transform: translateX(-50%);
+        }
+
+        .still-life .red-tool::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 82px;
+            height: 138px;
+            border-radius: 22px 22px 16px 16px;
+            background: linear-gradient(180deg, #cd2b15 0%, #9a1f15 100%);
+        }
+
+        .still-life .red-tool::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 108px;
+            transform: translateX(-50%);
+            width: 94px;
+            height: 26px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #bc1e16 0%, #8e1610 100%);
+        }
+
+        .review-section {
+            background: #f0f4f0;
+            padding: 40px 0 50px;
+        }
+
+        .review-section h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--green);
+            text-align: center;
+            font-size: clamp(2.8rem, 5vw, 4.4rem);
+            margin-bottom: 22px;
+            font-weight: 400;
+        }
+
+        .review-cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: #fff;
+            border-radius: 34px;
+            padding: 28px 24px;
+            display: grid;
+            grid-template-columns: 1fr 60px;
+            gap: 16px;
+            height: 100%;
+            align-items: center;
+            box-shadow: 0 14px 32px rgba(18, 38, 23, 0.12);
+        }
+
+        .review-card p {
+            color: var(--green-dark);
+            text-align: center;
+            font-size: 0.98rem;
+            line-height: 1.3;
+            max-width: 58ch;
+            margin: 0 auto;
+        }
+
+        .review-card strong {
+            display: block;
+            margin-top: 12px;
+            font-size: 1rem;
+        }
+
+        .quote {
+            color: var(--green);
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 4rem;
+            line-height: 1;
+            text-align: right;
+        }
+
+        .footer {
+            background: var(--green);
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            justify-content: space-between;
+            align-items: start;
+            gap: 56px;
+            padding: 24px 0 20px;
+        }
+
+        .footer h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.45rem;
+            text-decoration: underline;
+            margin-bottom: 8px;
+        }
+
+        .footer input {
+            width: 260px;
+            max-width: 100%;
+            border: none;
+            border-radius: 999px;
+            padding: 11px 16px;
+            margin: 6px 0;
+        }
+
+        .socials {
+            display: grid;
+            gap: 8px;
+            align-items: start;
+            font-size: 1rem;
+            line-height: 1.35;
+            justify-items: start;
+            text-align: left;
+        }
+
+        .copyright {
+            background: #dce4dd;
+            color: var(--green-dark);
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.74rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 980px) {
+            .why-grid,
+            .feature-panel,
+            .story-top,
+            .story-mid,
+            .mission,
+            .product-grid,
+            .design-grid,
+            .design-story-grid,
+            .review-card,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-art {
+                min-height: 340px;
+            }
+
+            .review-card {
+                text-align: center;
+            }
+
+            .review-cards-row {
+                grid-template-columns: 1fr;
+            }
+
+            .quote {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .wrap {
+                width: min(100% - 18px, 1180px);
+            }
+
+            .nav {
+                gap: 14px;
+                font-size: 0.82rem;
+            }
+
+            .hero-media {
+                width: 100%;
+            }
+
+            .hero-banner {
+                width: 100%;
+                padding: 22px 16px 24px;
+            }
+
+            .hero-banner h2 {
+                font-size: clamp(1.7rem, 5vw, 2.4rem);
+            }
+
+            .hero-banner p {
+                font-size: 0.92rem;
+            }
+
+            .preorder-link {
+                top: 14px;
+                right: 14px;
+                min-width: 146px;
+                padding: 12px 16px;
+                font-size: 0.76rem;
+            }
+
+            .feature-panel,
+            .design-hero > .wrap,
+            .story-text,
+            .review-card {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .btn-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .thumb-row {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-copy p,
+            .story p,
+            .details p,
+            .details li {
+                font-size: 0.98rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('header-container').innerHTML = html);
+    </script>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-media">
+                <a class="preorder-link" href="https://www.signaturecoreyllc.com/" target="_blank" rel="noopener noreferrer">Preorder Now</a>
+                <img class="hero-image" src="Pictures/Screenshot%202026-05-14%20022520.png" alt="Apple Core+ homepage hero screenshot">
+            </div>
+            <div class="hero-banner">
+                <h2>Press. Twist. Pop. Then Core!</h2>
+                <p>Say goodbye to messy, frustrating gadgets.<br>Apple Core+ makes it easy to core fruits and veggies.</p>
+            </div>
+        </section>
+
+        <section class="why wrap" id="about">
+            <h2 class="section-title">Why You’ll Love Apple Core+</h2>
+            <div class="why-grid">
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true"><img src="Pictures/Less-Mess-more-time.png" alt="Less Mess, More Time icon"></div>
+                    <h3>Less Mess, More Time</h3>
+                    <p>Clean core ejection with the press of a button.</p>
+                </article>
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true"><img src="Pictures/easy-to-use.png" alt="Easy to Use icon"></div>
+                    <h3>Easy to Use</h3>
+                    <p>Just press, twist, and click. Anyone can do it - yes, even the little ones (with help!).</p>
+                </article>
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true"><img src="Pictures/value.png" alt="Value Without Compromise icon"></div>
+                    <h3>Value Without Compromise</h3>
+                    <p>Designed to feel high-end, priced to be accessible.</p>
+                </article>
+            </div>
+        </section>
+
+<section class="feature-band wrap" style="background-color: #D5E0D8; padding: 0;">
+    <div class="feature-panel" style="display: flex; align-items: center; gap: 70px; padding: 60px 60px; font-family: 'Georgia', serif;">
+        <div class="feature-copy" style="flex: 2; color: #2d5a52;">
+            <p style="font-size: 22px; line-height: 1.6; margin-bottom: 15px;"><strong>Apple Core+</strong> makes it easy to core fruits and veggies with a simple press and twist—no buttons, no hassle.</p>
+            <p style="font-size: 22px; line-height: 1.6; margin-bottom: 25px;">Whether you're cooking at home, in a school, or in a pro kitchen, this tool simplifies prep so you can focus on flavor.</p>
+            <h4 style="color: #2d5a52; text-transform: uppercase; font-size: 20px; font-weight: bold; margin-bottom: 15px; letter-spacing: 1px;">Features:</h4>
+            <ul class="feature-list" style="color: #2d5a52; font-size: 26px; line-height: 1.8; margin-bottom: 30px;">
+                <li style="font-size: 20px;">Twist-and-Release Core Removal</li>
+                <li style="font-size: 20px;">Ergonomic, Comfortable Grip</li>
+                <li style="font-size: 20px;">Mess-Free Design</li>
+                <li style="font-size: 20px;">Universal Fit</li>
+                <li style="font-size: 20px;">Durable, High-Quality Materials</li>
+            </ul>
+            <div class="feature-end" style="color: #2d5a52; font-size: 44px; font-weight: bold; line-height: 1.1; white-space: nowrap;">Simple. Smart. Mess-Free.</div>
+        </div>
+        <div class="feature-art" aria-hidden="true" style="flex: 1; text-align: center; background: none;">
+            <img src="Pictures/Corer-Standing-up-removebg-preview.png" alt="Apple Core+ product image" style="width: 120%; max-width: 200px; height: auto; display: block; margin: 0 auto;">
+        </div>
+    </div>
+</section>
+
+
+<section class="design" id="reviews">
+    <div class="design-hero">
+        <div class="wrap">
+            <h2>Apple Core+ Smart Design</h2>
+
+            <div class="design-grid design-hero-grid">
+                <div class="tool-stage" aria-hidden="true">
+                    <img src="Pictures/Corer-Standing-up-removebg-preview.png" alt="Apple Core+ product image">
+                    <div class="label left-top">
+                        Comfort Grip<br>Handle
+                    </div>
+
+                    <div class="label left-bottom">
+                        Stainless Steel<br>Coring Barrel
+                    </div>
+
+                    <div class="label right-top">
+                        Twist Mechanism
+                    </div>
+
+                    <div class="label right-bottom">
+                        Open Barrel Tip
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="design-story">
+        <div class="wrap">
+            <h3>From Messy Mornings, to a Brilliant Idea</h3>
+            <div class="design-story-grid">
+                <div class="story-content">
+                    <p>
+                        Born out of the everyday chaos of kitchen prep, Apple Core+ was created to make coring fruits and veggies faster, cleaner, and more enjoyable without the complexity.
+                    </p>
+
+                    <p class="story-spacing">
+                        With a simple press and twist motion, this tool was designed to be safe for all ages and easy to use for real-life meals and messes. Whether you’re five or fifty-five, Apple Core+ brings ease and fun back to your kitchen routine.
+                    </p>
+
+                    <a href="https://www.signaturecoreyllc.com/" class="shop-button">Shop Now</a>
+                </div>
+
+                <div class="spread-image-wrapper">
+                    <img src="Pictures/Spread.png" alt="Apple Core+ spread image">
+                </div>
+            </div>
+
+            <div class="review-shell">
+                <h2>Reviews</h2>
+
+                <div class="review-cards-container">
+                    <div class="review-card featured-review">
+                        <p>
+                            I never thought coring apples and veggies could be this easy. Apple Core+ completely changed how I prep meals in my kitchen. It’s fast, mess-free, and even my 7-year-old loves helping out now! The automatic release is genius—no more struggling to get the core out. I can’t wait to gift this to my chef friends and teachers I know. Total game changer!
+
+                            <strong>
+                                - Jasmine L., Home Cook & Mom of Two
+                            </strong>
+                        </p>
+
+                        <div class="quote" aria-hidden="true">
+                            &rdquo;
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <p>
+                            This product is an absolute must-have for anyone who loves fresh apple dishes! The quality and durability are outstanding. I've used it dozens of times already and it works perfectly every single time. The design is so elegant and feels premium.
+
+                            <strong>
+                                - Marcus T., Professional Chef
+                            </strong>
+                        </p>
+
+                        <div class="quote" aria-hidden="true">
+                            &rdquo;
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <p>
+                            Finally, a coring tool that actually works! I've tried so many others that were frustrating and unreliable. Apple Core+ is smooth, efficient, and remarkably well-made. It saves me so much time in the kitchen.
+
+                            <strong>
+                                - Sarah M., Culinary Teacher
+                            </strong>
+                        </p>
+
+                        <div class="quote" aria-hidden="true">
+                            &rdquo;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <div id="footer-container"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('footer-container').innerHTML = html);
+    </script>
+    <script>
+        (function () {
+            if (!document.querySelector('main')) return;
+
+            var headerPad = 58;
+            var minAdvance = 28;
+            var motionLock = false;
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function nextSectionTop(scrollY) {
+                var sections = document.querySelectorAll('main > section');
+                for (var i = 0; i < sections.length; i++) {
+                    var el = sections[i];
+                    var t = el.getBoundingClientRect().top + window.scrollY - headerPad;
+                    if (t > scrollY + minAdvance) return t;
+                }
+                return null;
+            }
+
+            window.addEventListener('wheel', function (e) {
+                if (e.deltaY <= 0 || motionLock) return;
+                var target = nextSectionTop(window.scrollY);
+                if (target === null) return;
+                e.preventDefault();
+                motionLock = true;
+                window.scrollTo({
+                    top: target,
+                    behavior: reduceMotion ? 'auto' : 'smooth'
+                });
+                function unlock() {
+                    motionLock = false;
+                }
+                var fallbackMs = reduceMotion ? 90 : 750;
+                var tid = setTimeout(unlock, fallbackMs);
+                document.addEventListener('scrollend', function onScrollEnd() {
+                    document.removeEventListener('scrollend', onScrollEnd);
+                    clearTimeout(tid);
+                    unlock();
+                });
+            }, { passive: false });
+        })();
+    </script>
+</body>
+</html>
+
