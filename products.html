@@ -278,7 +278,7 @@
 
         .tabbar {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             margin: 14px 0 20px;
             border-bottom: 1px solid rgba(33, 69, 43, 0.25);
         }
@@ -310,7 +310,8 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: max-content max-content;
+            justify-content: space-between;
             gap: 28px;
             padding: 24px 0 20px;
         }
@@ -376,6 +377,11 @@
             font-size: inherit;
             font-weight: 400;
             text-transform: none;
+        }
+
+        .footer-grid > :last-child {
+            justify-self: end;
+            text-align: left;
         }
 
         .copyright {
@@ -457,14 +463,13 @@
                     <h2>Apple Core+</h2>
                     <p>Apple Core+ is your go-to tool for quick, clean, and easy fruit and veggie prep. With a simple press and twist, it cores produce in seconds no mess, no hassle. Designed for everyday cooks, curious kids, and busy kitchens, it's a smarter way to prep.</p>
                     <div class="price">$39.99</div>
-                    <div class="stars">★★★★★ <span style="color: var(--green-dark); text-decoration: underline; font-size: 1rem; vertical-align: middle; margin-left: 4px;">299 REVIEWS</span></div>
+                    
                     <div class="btn-row">
                         <a class="btn primary" href="https://www.signaturecoreyllc.com/">Preorder Now</a>
                     </div>
 
                     <div class="tabbar">
-                        <div>Description</div>
-                        <div>Reviews (299)</div>
+                        <div style="justify-self: center;">Description</div>
                     </div>
 
                     <div class="product-copy">
