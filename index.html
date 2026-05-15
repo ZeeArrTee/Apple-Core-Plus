@@ -268,8 +268,7 @@
 
         .feature-band {
             padding: 16px 0 44px;
-            min-height: calc(100vh - 58px);
-            min-height: calc(100dvh - 58px);
+            min-height: auto;
             display: flex;
             align-items: center;
             width: 100%;
@@ -286,25 +285,47 @@
 
         .feature-panel {
             background: #f0f4f0;
-            padding: 48px 50px;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 32px;
+            padding: clamp(28px, 4vw, 56px);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: clamp(20px, 4vw, 70px);
             align-items: center;
         }
 
+        .feature-copy {
+            flex: 1 1 360px;
+            color: #2d5a52;
+        }
+
+        .feature-art {
+            flex: 0 1 260px;
+            text-align: center;
+            background: none;
+            min-width: 220px;
+        }
+
+        .feature-art img {
+            width: min(100%, 220px);
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
         .feature-copy p {
-            font-size: 1.08rem;
-            line-height: 1.24;
+            font-size: clamp(1.02rem, 1.4vw, 1.25rem);
+            line-height: 1.35;
             margin-bottom: 16px;
             color: var(--green-dark);
-            max-width: 44ch;
+            max-width: 48ch;
         }
 
         .feature-copy h4 {
             color: var(--green-dark);
             font-family: Georgia, 'Times New Roman', serif;
-            font-size: 2.1rem;
+            font-size: clamp(1.4rem, 2.3vw, 2.1rem);
             margin: 20px 0 10px;
         }
 
@@ -318,7 +339,7 @@
             position: relative;
             padding-left: 24px;
             margin: 10px 0;
-            font-size: 0.98rem;
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
         }
 
         .feature-list li::before {
@@ -332,8 +353,9 @@
 
         .feature-end {
             font-family: Georgia, 'Times New Roman', serif;
-            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-size: clamp(1.8rem, 3.6vw, 3.2rem);
             color: var(--green-dark);
+            white-space: normal;
         }
 
         .feature-art {
@@ -724,8 +746,7 @@
         .design {
             background: #fff;
             padding: 16px 0 48px;
-            min-height: calc(100vh - 58px);
-            min-height: calc(100dvh - 58px);
+            min-height: auto;
         }
 
         .design-hero {
@@ -735,7 +756,7 @@
 
         .design-hero > .wrap {
             background: #cfdccf;
-            padding: 32px 20px 40px;
+            padding: clamp(20px, 3.5vw, 40px) clamp(16px, 3vw, 28px) clamp(24px, 4vw, 44px);
             box-sizing: border-box;
         }
 
@@ -749,21 +770,23 @@
 
         .design-grid {
             display: grid;
-            grid-template-columns: minmax(320px, 0.92fr) minmax(360px, 1.08fr);
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: clamp(20px, 3vw, 40px);
             place-items: center;
-            min-height: 500px;
+            min-height: auto;
         }
 
         .design-hero-grid {
             grid-template-columns: 1fr;
-            min-height: 430px;
+            min-height: auto;
         }
 
         .tool-stage {
             position: relative;
-            min-height: 360px;
+            width: min(100%, 980px);
+            min-height: clamp(320px, 55vw, 520px);
             place-self: center;
+            aspect-ratio: 16 / 10;
         }
 
         .tool-stage img {
@@ -771,7 +794,7 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: clamp(108px, 11vw, 138px);
+            width: clamp(108px, 10vw, 150px);
             height: auto;
             display: block;
             z-index: 0;
@@ -826,10 +849,10 @@
             position: absolute;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
             color: var(--green-dark);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: clamp(0.78rem, 1.1vw, 1rem);
             line-height: 1.1;
             width: max-content;
         }
@@ -869,8 +892,8 @@
 
         .design-story-grid {
             display: grid;
-            grid-template-columns: minmax(240px, 0.9fr) minmax(280px, 1.1fr);
-            gap: 14px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(18px, 3vw, 28px);
             align-items: center;
         }
 
@@ -890,6 +913,7 @@
             margin: 0;
             gap: 18px;
             color: var(--green-dark);
+            max-width: 52ch;
         }
 
         .story-content p {
@@ -915,7 +939,7 @@
         }
 
         .spread-image-wrapper {
-            width: min(100%, 420px);
+            width: min(100%, 460px);
             margin-left: auto;
             margin-right: auto;
             padding: 10px;
@@ -1038,9 +1062,9 @@
 
         .review-cards-container {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
-            max-width: 980px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -1130,12 +1154,10 @@
 
         @media (max-width: 980px) {
             .why-grid,
-            .feature-panel,
             .story-top,
             .story-mid,
             .mission,
             .product-grid,
-            .design-grid,
             .design-story-grid,
             .review-card,
             .footer-grid {
@@ -1143,7 +1165,17 @@
             }
 
             .feature-art {
-                min-height: 340px;
+                min-height: 280px;
+                flex-basis: 100%;
+            }
+
+            .feature-panel {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .feature-copy {
+                flex-basis: 100%;
             }
 
             .review-card {
@@ -1152,6 +1184,29 @@
 
             .review-cards-row {
                 grid-template-columns: 1fr;
+            }
+
+            .design-story-grid,
+            .product-grid,
+            .design-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-stage {
+                min-height: 280px;
+                aspect-ratio: 1 / 1;
+            }
+
+            .label {
+                display: none;
+            }
+
+            .design-story {
+                padding-top: 36px;
+            }
+
+            .design-grid {
+                min-height: 360px;
             }
 
             .quote {
@@ -1215,11 +1270,27 @@
                 grid-template-columns: 1fr;
             }
 
+            .design-hero h2,
+            .design-story h3,
+            .review-shell h2 {
+                text-wrap: balance;
+            }
+
+            .story-content,
+            .spread-image-wrapper,
+            .photo-card {
+                width: 100%;
+            }
+
             .feature-copy p,
             .story p,
             .details p,
             .details li {
                 font-size: 0.98rem;
+            }
+
+            .spread-image-wrapper {
+                padding: 8px;
             }
         }
 
@@ -1391,28 +1462,28 @@
             </div>
         </section>
 
-<section class="feature-band feature-band--bleed">
-    <div class="wrap">
-    <div class="feature-panel" style="display: flex; align-items: center; gap: 70px; padding: 60px 60px; font-family: 'Georgia', serif;">
-        <div class="feature-copy" style="flex: 2; color: #2d5a52;">
-            <p style="font-size: 22px; line-height: 1.6; margin-bottom: 15px;"><strong>Apple Core+</strong> makes it easy to core fruits and veggies with a simple press and twist—no buttons, no hassle.</p>
-            <p style="font-size: 22px; line-height: 1.6; margin-bottom: 25px;">Whether you're cooking at home, in a school, or in a pro kitchen, this tool simplifies prep so you can focus on flavor.</p>
-            <h4 style="color: #2d5a52; text-transform: uppercase; font-size: 20px; font-weight: bold; margin-bottom: 15px; letter-spacing: 1px;">Features:</h4>
-            <ul class="feature-list" style="color: #2d5a52; font-size: 26px; line-height: 1.8; margin-bottom: 30px;">
-                <li style="font-size: 20px;">Twist-and-Release Core Removal</li>
-                <li style="font-size: 20px;">Ergonomic, Comfortable Grip</li>
-                <li style="font-size: 20px;">Mess-Free Design</li>
-                <li style="font-size: 20px;">Universal Fit</li>
-                <li style="font-size: 20px;">Durable, High-Quality Materials</li>
-            </ul>
-            <div class="feature-end" style="color: #2d5a52; font-size: 44px; font-weight: bold; line-height: 1.1; white-space: nowrap;">Simple. Smart. Mess-Free.</div>
-        </div>
-        <div class="feature-art" aria-hidden="true" style="flex: 1; text-align: center; background: none;">
-            <img src="Pictures/Corer-Standing-up-removebg-preview.png" alt="Apple Core+ product image" style="width: 120%; max-width: 200px; height: auto; display: block; margin: 0 auto;">
-        </div>
-    </div>
-    </div>
-</section>
+        <section class="feature-band feature-band--bleed">
+            <div class="wrap">
+                <div class="feature-panel" style="font-family: 'Georgia', serif;">
+                    <div class="feature-copy">
+                        <p><strong>Apple Core+</strong> makes it easy to core fruits and veggies with a simple press and twist—no buttons, no hassle.</p>
+                        <p>Whether you're cooking at home, in a school, or in a pro kitchen, this tool simplifies prep so you can focus on flavor.</p>
+                        <h4>Features:</h4>
+                        <ul class="feature-list">
+                            <li>Twist-and-Release Core Removal</li>
+                            <li>Ergonomic, Comfortable Grip</li>
+                            <li>Mess-Free Design</li>
+                            <li>Universal Fit</li>
+                            <li>Durable, High-Quality Materials</li>
+                        </ul>
+                        <div class="feature-end">Simple. Smart. Mess-Free.</div>
+                    </div>
+                    <div class="feature-art" aria-hidden="true">
+                        <img src="Pictures/Corer-Standing-up-removebg-preview.png" alt="Apple Core+ product image">
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
 <section class="design" id="reviews">
@@ -1512,48 +1583,6 @@
         fetch('footer.html')
             .then(response => response.text())
             .then(html => document.getElementById('footer-container').innerHTML = html);
-    </script>
-    <script>
-        (function () {
-            if (!document.querySelector('main')) return;
-
-            var headerPad = 58;
-            var minAdvance = 28;
-            var motionLock = false;
-            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            function nextSectionTop(scrollY) {
-                var sections = document.querySelectorAll('main > section');
-                for (var i = 0; i < sections.length; i++) {
-                    var el = sections[i];
-                    var t = el.getBoundingClientRect().top + window.scrollY - headerPad;
-                    if (t > scrollY + minAdvance) return t;
-                }
-                return null;
-            }
-
-            window.addEventListener('wheel', function (e) {
-                if (e.deltaY <= 0 || motionLock) return;
-                var target = nextSectionTop(window.scrollY);
-                if (target === null) return;
-                e.preventDefault();
-                motionLock = true;
-                window.scrollTo({
-                    top: target,
-                    behavior: reduceMotion ? 'auto' : 'smooth'
-                });
-                function unlock() {
-                    motionLock = false;
-                }
-                var fallbackMs = reduceMotion ? 90 : 750;
-                var tid = setTimeout(unlock, fallbackMs);
-                document.addEventListener('scrollend', function onScrollEnd() {
-                    document.removeEventListener('scrollend', onScrollEnd);
-                    clearTimeout(tid);
-                    unlock();
-                });
-            }, { passive: false });
-        })();
     </script>
     <script>
         // Toggle split (left-half) player using a stable scroll threshold
