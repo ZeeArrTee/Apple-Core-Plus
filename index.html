@@ -745,18 +745,19 @@
 
         .design {
             background: #fff;
-            padding: 16px 0 48px;
-            min-height: auto;
+            padding: 0 0 48px;
         }
 
         .design-hero {
-            padding: 0;
+            width: 100%;
+            background: #dce4d8;
+            padding: clamp(36px, 5vw, 64px) 0 clamp(44px, 6vw, 72px);
             overflow-x: clip;
         }
 
         .design-hero > .wrap {
-            background: #cfdccf;
-            padding: clamp(20px, 3.5vw, 40px) clamp(16px, 3vw, 28px) clamp(24px, 4vw, 44px);
+            background: transparent;
+            padding: 0 clamp(16px, 3vw, 28px);
             box-sizing: border-box;
         }
 
@@ -764,115 +765,90 @@
             font-family: Georgia, 'Times New Roman', serif;
             text-align: center;
             color: var(--green-dark);
-            font-size: clamp(2.8rem, 5.8vw, 5.2rem);
-            margin: 8px 0 30px;
+            font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin: 0 0 clamp(28px, 4vw, 48px);
         }
 
-        .design-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: clamp(20px, 3vw, 40px);
-            place-items: center;
-            min-height: auto;
+        .design-showcase {
+            width: 100%;
+            max-width: min(100%, 1040px);
+            margin: 0 auto;
         }
 
-        .design-hero-grid {
-            grid-template-columns: 1fr;
-            min-height: auto;
-        }
-
-        .tool-stage {
+        .design-stage {
             position: relative;
-            width: min(100%, 980px);
-            min-height: clamp(320px, 55vw, 520px);
-            place-self: center;
-            aspect-ratio: 16 / 10;
+            width: 100%;
+            margin: 0 auto;
+            aspect-ratio: 100 / 58;
+            min-height: clamp(300px, 48vw, 560px);
         }
 
-        .tool-stage img {
+        .design-stage__product {
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: clamp(160px, 28vw, 420px);
+            width: clamp(110px, 17vw, 240px);
             height: auto;
             display: block;
-            z-index: 0;
+            z-index: 1;
         }
 
-        .tool-core {
+        .callout {
             position: absolute;
-            left: 50%;
-            top: 8px;
-            transform: translateX(-50%);
-            width: clamp(96px, 8.5vw, 180px);
-            height: clamp(220px, 35vw, 420px);
-        }
-
-        .tool-core::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 48%;
-            border-radius: 22px 22px 18px 18px;
-            background: linear-gradient(180deg, #f05a28 0%, #dc4319 100%);
-        }
-
-        .tool-core::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 40%;
-            transform: translateX(-50%);
-            width: 120%;
-            height: 12%;
-            border-radius: 999px;
-            background: linear-gradient(180deg, #f16b31 0%, #e14c20 100%);
-        }
-
-        .tool-shaft {
-            position: absolute;
-            left: 50%;
-            top: 40%;
-            transform: translateX(-50%);
-            width: clamp(16px, 1.6vw, 36px);
-            height: clamp(120px, 22vw, 260px);
-            border-radius: 12px;
-            background: linear-gradient(180deg, #b59c61 0%, #6f561d 100%);
-            box-shadow: 0 8px 14px rgba(0,0,0,0.14);
-        }
-
-        .label {
-            position: absolute;
+            z-index: 2;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: clamp(6px, 1.2vw, 16px);
             color: var(--green-dark);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             font-weight: 700;
-            font-size: clamp(0.78rem, 1.1vw, 1rem);
-            line-height: 1.1;
-            width: max-content;
+            font-size: clamp(0.72rem, 1.05vw, 1.05rem);
+            line-height: 1.2;
+            max-width: min(46%, 360px);
         }
 
-        .label::after {
+        .callout::after {
             content: '';
             display: block;
-            flex: 0 0 clamp(100px, 16vw, 220px);
+            flex: 1 1 auto;
+            min-width: clamp(28px, 5vw, 48px);
+            max-width: clamp(48px, 11vw, 200px);
             height: 1px;
-            background: rgba(33, 69, 43, 0.45);
+            background: var(--green-dark);
+            opacity: 0.5;
         }
 
-        .label.left-top { left: 4%; top: 20%; flex-direction: row-reverse; }
-        .label.left-bottom { left: 4%; top: 55%; flex-direction: row-reverse; }
-        .label.right-top { right: 4%; top: 22%; text-align: right; }
-        .label.right-bottom { right: 4%; top: 62%; text-align: right; }
+        .callout--left {
+            flex-direction: row;
+            text-align: left;
+        }
 
-        .label.right-top::after,
-        .label.right-bottom::after {
-            background: rgba(33, 69, 43, 0.45);
+        .callout--right {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .callout--grip {
+            top: 10%;
+            left: clamp(0px, 1vw, 12px);
+        }
+
+        .callout--barrel {
+            top: 46%;
+            left: clamp(0px, 1vw, 12px);
+        }
+
+        .callout--twist {
+            top: 12%;
+            right: clamp(0px, 1vw, 12px);
+        }
+
+        .callout--tip {
+            top: 50%;
+            right: clamp(0px, 1vw, 12px);
         }
 
         .design-story {
@@ -1187,26 +1163,25 @@
             }
 
             .design-story-grid,
-            .product-grid,
-            .design-grid {
+            .product-grid {
                 grid-template-columns: 1fr;
             }
 
-            .tool-stage {
-                min-height: 280px;
-                aspect-ratio: 1 / 1;
+            .design-stage {
+                aspect-ratio: 100 / 72;
+                min-height: clamp(340px, 62vw, 520px);
             }
 
-            .label {
-                display: none;
+            .design-stage__product {
+                width: clamp(100px, 22vw, 200px);
+            }
+
+            .callout {
+                max-width: min(52%, 300px);
             }
 
             .design-story {
                 padding-top: 36px;
-            }
-
-            .design-grid {
-                min-height: 360px;
             }
 
             .quote {
@@ -1291,6 +1266,45 @@
 
             .spread-image-wrapper {
                 padding: 8px;
+            }
+
+            .design-stage {
+                aspect-ratio: 100 / 80;
+                min-height: clamp(360px, 95vw, 480px);
+            }
+
+            .design-stage__product {
+                width: clamp(88px, 28vw, 160px);
+            }
+
+            .callout {
+                max-width: min(58%, 220px);
+                font-size: clamp(0.68rem, 2.8vw, 0.88rem);
+            }
+
+            .callout--grip {
+                top: 6%;
+                left: 0;
+            }
+
+            .callout--barrel {
+                top: 42%;
+                left: 0;
+            }
+
+            .callout--twist {
+                top: 8%;
+                right: 0;
+            }
+
+            .callout--tip {
+                top: 46%;
+                right: 0;
+            }
+
+            .callout::after {
+                min-width: 20px;
+                max-width: clamp(32px, 8vw, 72px);
             }
         }
 
@@ -1491,22 +1505,23 @@
         <div class="wrap">
             <h2>Apple Core+ Smart Design</h2>
 
-            <div class="design-grid design-hero-grid">
-                <div class="tool-stage" aria-hidden="true">
-                    <img src="Pictures/Corer-Standing-up-removebg-preview.png" alt="Apple Core+ product image">
-                    <div class="label left-top">
+            <div class="design-showcase">
+                <div class="design-stage">
+                    <img
+                        class="design-stage__product"
+                        src="Pictures/Corer-Standing-up-removebg-preview.png"
+                        alt="Apple Core+ product image"
+                    >
+                    <div class="callout callout--left callout--grip">
                         Comfort Grip<br>Handle
                     </div>
-
-                    <div class="label left-bottom">
+                    <div class="callout callout--left callout--barrel">
                         Stainless Steel<br>Coring Barrel
                     </div>
-
-                    <div class="label right-top">
+                    <div class="callout callout--right callout--twist">
                         Twist Mechanism
                     </div>
-
-                    <div class="label right-bottom">
+                    <div class="callout callout--right callout--tip">
                         Open Barrel Tip
                     </div>
                 </div>
