@@ -794,7 +794,7 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: clamp(108px, 10vw, 150px);
+            width: clamp(160px, 28vw, 420px);
             height: auto;
             display: block;
             z-index: 0;
@@ -805,8 +805,8 @@
             left: 50%;
             top: 8px;
             transform: translateX(-50%);
-            width: 96px;
-            height: 318px;
+            width: clamp(96px, 8.5vw, 180px);
+            height: clamp(220px, 35vw, 420px);
         }
 
         .tool-core::before {
@@ -815,8 +815,8 @@
             left: 50%;
             top: 0;
             transform: translateX(-50%);
-            width: 96px;
-            height: 154px;
+            width: 100%;
+            height: 48%;
             border-radius: 22px 22px 18px 18px;
             background: linear-gradient(180deg, #f05a28 0%, #dc4319 100%);
         }
@@ -825,10 +825,10 @@
             content: '';
             position: absolute;
             left: 50%;
-            top: 124px;
+            top: 40%;
             transform: translateX(-50%);
-            width: 116px;
-            height: 38px;
+            width: 120%;
+            height: 12%;
             border-radius: 999px;
             background: linear-gradient(180deg, #f16b31 0%, #e14c20 100%);
         }
@@ -836,10 +836,10 @@
         .tool-shaft {
             position: absolute;
             left: 50%;
-            top: 162px;
+            top: 40%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 164px;
+            width: clamp(16px, 1.6vw, 36px);
+            height: clamp(120px, 22vw, 260px);
             border-radius: 12px;
             background: linear-gradient(180deg, #b59c61 0%, #6f561d 100%);
             box-shadow: 0 8px 14px rgba(0,0,0,0.14);
@@ -860,15 +860,15 @@
         .label::after {
             content: '';
             display: block;
-            flex: 0 0 142px;
+            flex: 0 0 clamp(100px, 16vw, 220px);
             height: 1px;
             background: rgba(33, 69, 43, 0.45);
         }
 
-        .label.left-top { left: 18px; top: 110px; flex-direction: row-reverse; }
-        .label.left-bottom { left: 18px; top: 248px; flex-direction: row-reverse; }
-        .label.right-top { right: 18px; top: 128px; text-align: right; }
-        .label.right-bottom { right: 18px; top: 270px; text-align: right; }
+        .label.left-top { left: 4%; top: 20%; flex-direction: row-reverse; }
+        .label.left-bottom { left: 4%; top: 55%; flex-direction: row-reverse; }
+        .label.right-top { right: 4%; top: 22%; text-align: right; }
+        .label.right-bottom { right: 4%; top: 62%; text-align: right; }
 
         .label.right-top::after,
         .label.right-bottom::after {
