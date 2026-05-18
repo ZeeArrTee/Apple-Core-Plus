@@ -358,20 +358,6 @@
             display: none;
         }
 
-        @media (max-width: 768px) {
-            body.mini-active .feature-pip {
-                display: block;
-                position: fixed;
-                right: 14px;
-                bottom: 14px;
-                width: clamp(72px, 22vw, 110px);
-                height: auto;
-                z-index: 10015;
-                pointer-events: none;
-                filter: drop-shadow(0 10px 22px rgba(18, 38, 23, 0.22));
-            }
-        }
-
         .tool {
             position: absolute;
             right: 90px;
@@ -1350,10 +1336,6 @@
                 top: auto !important;
                 bottom: calc(28vh + 22px);
             }
-
-            body.mini-active .feature-pip {
-                bottom: calc(28vh + 28px);
-            }
         }
 
             /* Split (left-half) layout when hero scrolls out */
@@ -1549,7 +1531,7 @@
 
     <div class="design-story">
         <div class="wrap">
-            <h3>From Messy Mornings, to a Brilliant Idea</h3>
+            <h3>Enjoy the moment using Apple Core+!</h3>
             <div class="design-story-grid">
                 <div class="story-content">
                     <p>
@@ -1702,8 +1684,8 @@
 
             function syncFloatingState() {
                 ticking = false;
-                var enterAt = hero.offsetHeight + 40;
-                var exitAt = hero.offsetHeight - 140;
+                var enterAt = Math.max(120, hero.offsetHeight * 0.55);
+                var exitAt = Math.max(0, hero.offsetHeight * 0.35);
 
                 if (!isFloating && window.scrollY >= enterAt) {
                     setFloatingPlayer(true);
