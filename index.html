@@ -230,7 +230,9 @@
             min-height: calc(100vh - 58px);
             min-height: calc(100dvh - 58px);
             display: flex;
+            flex-direction: column;
             align-items: center;
+            gap: 28px;
         }
 
         .why-grid {
@@ -240,14 +242,18 @@
         }
 
         .why-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
             padding: 10px 12px;
+            gap: 12px;
         }
 
         .why-icon {
             width: 112px;
             height: 112px;
-            margin: 0 auto 18px;
+            margin: 18px auto 0;
             display: grid;
             place-items: center;
         }
@@ -1452,7 +1458,7 @@
             <div class="hero-media">
                 <a class="preorder-link" href="https://www.signaturecoreyllc.com/" target="_blank" rel="noopener noreferrer">Preorder Now</a>
                 <video class="hero-image" autoplay muted loop playsinline>
-                    <source src="FInal%20vid.mp4" type="video/mp4">
+                    <source src="Pictures/AppleCore-Changed.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -1466,19 +1472,19 @@
             <h2 class="section-title">Why You’ll Love Apple Core<span class="brand-plus">+</span></h2>
             <div class="why-grid">
                 <article class="why-card">
-                    <div class="why-icon" aria-hidden="true"><img src="Pictures/Less-Mess-more-time.png" alt="Less Mess, More Time icon"></div>
                     <h3>Less Mess, More Time</h3>
                     <p>Clean core ejection with the press of a button.</p>
+                    <div class="why-icon" aria-hidden="true"><img src="Pictures/Less-Mess-more-time.png" alt="Less Mess, More Time icon"></div>
                 </article>
                 <article class="why-card">
-                    <div class="why-icon" aria-hidden="true"><img src="Pictures/easy-to-use.png" alt="Easy to Use icon"></div>
                     <h3>Easy to Use</h3>
                     <p>Just press, twist, and click. Anyone can do it - yes, even the little ones (with help!).</p>
+                    <div class="why-icon" aria-hidden="true"><img src="Pictures/easy-to-use.png" alt="Easy to Use icon"></div>
                 </article>
                 <article class="why-card">
-                    <div class="why-icon" aria-hidden="true"><img src="Pictures/value.png" alt="Value Without Compromise icon"></div>
                     <h3>Value Without Compromise</h3>
                     <p>Designed to feel high-end, priced to be accessible.</p>
+                    <div class="why-icon" aria-hidden="true"><img src="Pictures/value.png" alt="Value Without Compromise icon"></div>
                 </article>
             </div>
         </section>
