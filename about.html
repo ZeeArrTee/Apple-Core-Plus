@@ -605,6 +605,98 @@
             .story p {
                 font-size: 0.98rem;
             }
+            /* Mobile navigation: hide nav and show toggle */
+            .mobile-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 0; /* hide text */
+                padding: 8px;
+            }
+
+            .mobile-toggle .menu-icon span {
+                width: 28px;
+                height: 4px;
+                border-radius: 4px;
+                background: #fff;
+            }
+
+            .topbar .wrap { position: relative; }
+
+            .nav {
+                display: none;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 58px;
+                background: var(--green);
+                padding: 12px 16px;
+                flex-direction: column;
+                gap: 12px;
+                z-index: 60;
+            }
+
+            .nav.open { display: flex; }
+        }
+        /* Extra small screens: tighten spacing and ensure images scale nicely */
+        @media (max-width: 480px) {
+            body {
+                font-size: 15px;
+            }
+
+            .wrap {
+                width: calc(100% - 16px);
+                padding: 0 8px;
+            }
+
+            .meet-founder__text {
+                padding: 20px 16px 28px;
+                margin-left: 0;
+                min-height: auto;
+            }
+
+            .meet-founder__text h2 {
+                font-size: clamp(1.25rem, 6.4vw, 1.9rem);
+                margin-bottom: 12px;
+            }
+
+            .meet-founder .polaroid {
+                width: 100%;
+                max-width: 360px;
+                transform: rotate(-2deg);
+                margin: 0 auto;
+            }
+
+            .story-top,
+            .story-mid,
+            .mission {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .mission h2 {
+                font-size: clamp(1.6rem, 8vw, 2.4rem);
+            }
+
+            .photo-card.square-block,
+            .story-mid.square-grid > .square-block {
+                aspect-ratio: auto;
+                height: auto;
+                padding: 8px;
+            }
+
+            .still-life,
+            .polaroid__photo {
+                height: auto !important;
+                min-height: 120px;
+            }
+
+            .responsive-img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
         }
     </style>
 </head>
@@ -613,7 +705,20 @@
     <script>
         fetch('header.html')
             .then(response => response.text())
-            .then(html => document.getElementById('header-container').innerHTML = html);
+            .then(html => {
+                const container = document.getElementById('header-container');
+                container.innerHTML = html;
+                const toggle = container.querySelector('.mobile-toggle');
+                const nav = container.querySelector('#primary-nav');
+                if (toggle && nav) {
+                    // ensure initial state
+                    toggle.addEventListener('click', () => {
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!expanded));
+                        nav.classList.toggle('open');
+                    });
+                }
+            });
     </script>
 
     <main>
@@ -623,7 +728,7 @@
                     <figure class="polaroid">
                         <div class="polaroid__photo">
                             <!-- Add photo: <img src="Pictures/your-photo.jpg" alt="Cheryl Bradley"> -->
-                             <img src="Pictures/OpenAI Playground 2026-05-16 at 03.06.53.png" alt="Cheryl Bradley">
+                             <img src="Pictures/OpenAI Playground 2026-05-16 at 03.06.53.png" alt="Cheryl Bradley" class="responsive-img" loading="lazy" srcset="Pictures/OpenAI Playground 2026-05-16 at 03.06.53.png 1x, Pictures/OpenAI Playground 2026-05-16 at 03.06.53.png 2x" sizes="(max-width: 480px) 90vw, 40vw">
                         </div>
                     </figure>
                     <div class="meet-founder__text">
@@ -647,7 +752,7 @@
                 </div>
                 <div class="photo-card square-block" aria-hidden="true" style="padding: 20px; width: 100%; max-width: 420px; border-radius: 4px; margin-left: auto; margin-right: 0;">
                     <div class="still-life" style="width: 100%; height: 100%; background-color: #f9f9f9; position: relative; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                        <img src="Pictures/OpenAI Playground 2026-05-14 at 04.36.49.png" alt="Apple Core+ tool" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <img src="Pictures/OpenAI Playground 2026-05-14 at 04.36.49.png" alt="Apple Core+ tool" class="responsive-img" loading="lazy" srcset="Pictures/OpenAI Playground 2026-05-14 at 04.36.49.png 1x, Pictures/OpenAI Playground 2026-05-14 at 04.36.49.png 2x" sizes="(max-width: 480px) 90vw, 40vw" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                     </div>
                 </div>
             </div>

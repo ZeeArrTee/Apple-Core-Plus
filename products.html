@@ -437,6 +437,59 @@
             .footer-grid {
                 grid-template-columns: 1fr;
             }
+            /* Mobile navigation and compact layout tweaks */
+            .mobile-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 0;
+                padding: 8px;
+            }
+
+            .mobile-toggle .menu-icon span {
+                width: 28px;
+                height: 4px;
+                border-radius: 4px;
+                background: #fff;
+            }
+
+            .topbar .wrap { position: relative; }
+
+            .nav {
+                display: none;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 58px;
+                background: var(--green);
+                padding: 12px 16px;
+                flex-direction: column;
+                gap: 12px;
+                z-index: 60;
+            }
+
+            .nav.open { display: flex; }
+
+            /* Make images scale down and shorten heights on phones */
+            .main-shot { height: 220px; }
+            .thumb { height: 120px; }
+
+            .details h2 { font-size: clamp(1.6rem, 6vw, 2.6rem); }
+            .price { font-size: clamp(1.4rem, 5vw, 2rem); }
+            .btn { padding: 12px 18px; }
+            .product { padding: 18px 0 28px; }
+        }
+
+        @media (max-width: 480px) {
+            .wrap { width: calc(100% - 16px); padding: 0 8px; }
+            .main-shot { height: 180px; }
+            .thumb { height: 100px; }
+            .product-grid { gap: 12px; }
+            .details { padding-left: 6px; }
+            .details p, .details li { font-size: 0.95rem; }
+            .btn { padding: 10px 14px; font-size: 0.95rem; }
+            .nav { top: 48px; }
         }
     </style>
 </head>
@@ -445,7 +498,19 @@
     <script>
         fetch('header.html')
             .then(response => response.text())
-            .then(html => document.getElementById('header-container').innerHTML = html);
+            .then(html => {
+                const container = document.getElementById('header-container');
+                container.innerHTML = html;
+                const toggle = container.querySelector('.mobile-toggle');
+                const nav = container.querySelector('#primary-nav');
+                if (toggle && nav) {
+                    toggle.addEventListener('click', () => {
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!expanded));
+                        nav.classList.toggle('open');
+                    });
+                }
+            });
     </script>
 
     <main>
@@ -453,12 +518,12 @@
             <div class="product-grid">
                 <div class="gallery">
                     <div class="main-shot" aria-hidden="true">
-                        <img src="Pictures/Screenshot 2026-05-14 022520.png" alt="Apple Core+ hero product image">
+                        <img src="Pictures/Screenshot 2026-05-14 022520.png" alt="Apple Core+ hero product image" class="responsive-img" loading="lazy" srcset="Pictures/Screenshot 2026-05-14 022520.png 1x, Pictures/Screenshot 2026-05-14 022520.png 2x" sizes="(max-width:480px) 90vw, 60vw">
                     </div>
                     <div class="thumb-row" aria-hidden="true">
-                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045321.png" alt="Apple Core+ product angle view"></div>
-                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045333.png" alt="Apple Core+ product front view"></div>
-                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045359.png" alt="Apple Core+ product detail view"></div>
+                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045321.png" alt="Apple Core+ product angle view" class="responsive-img" loading="lazy" srcset="Pictures/Screenshot 2026-05-14 045321.png 1x, Pictures/Screenshot 2026-05-14 045321.png 2x" sizes="(max-width:480px) 28vw, 90px"></div>
+                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045333.png" alt="Apple Core+ product front view" class="responsive-img" loading="lazy" srcset="Pictures/Screenshot 2026-05-14 045333.png 1x, Pictures/Screenshot 2026-05-14 045333.png 2x" sizes="(max-width:480px) 28vw, 90px"></div>
+                        <div class="thumb"><img src="Pictures/Screenshot 2026-05-14 045359.png" alt="Apple Core+ product detail view" class="responsive-img" loading="lazy" srcset="Pictures/Screenshot 2026-05-14 045359.png 1x, Pictures/Screenshot 2026-05-14 045359.png 2x" sizes="(max-width:480px) 28vw, 90px"></div>
                     </div>
                 </div>
 
