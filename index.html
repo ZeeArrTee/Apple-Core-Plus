@@ -878,7 +878,12 @@
 
         .design-story-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            /* Constrain the story grid so it sits centered in the page.
+               This makes the distance from the left edge to the text
+               equal to the distance from the right edge to the image. */
+            max-width: 1040px;
+            margin: 0 auto;
+            grid-template-columns: 1fr minmax(340px, 460px);
             gap: clamp(18px, 3vw, 28px);
             align-items: center;
         }
@@ -894,16 +899,17 @@
         .story-content {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
+            align-items: center; /* center content horizontally */
+            text-align: center; /* center paragraph text */
             margin: 0;
             gap: 18px;
             color: var(--green-dark);
             max-width: 52ch;
+            transform: none; /* centered within the constrained grid */
         }
 
         .story-content p {
-            max-width: 34ch;
+            max-width: 44ch; /* allow a bit wider for centered layout */
             font-size: 1rem;
             line-height: 1.3;
         }
@@ -1260,6 +1266,23 @@
             .spread-image-wrapper,
             .photo-card {
                 width: 100%;
+            }
+
+            /* Stack the design story elements on small screens
+               and place the image above the text for better flow. */
+            .design-story-grid {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .spread-image-wrapper {
+                order: -1; /* image first */
+                margin-bottom: 18px;
+            }
+
+            /* Remove horizontal nudge on narrow viewports so content is centered */
+            .story-content {
+                transform: translateX(0);
             }
 
             .feature-copy p,
