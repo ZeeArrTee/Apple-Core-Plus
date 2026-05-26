@@ -587,6 +587,37 @@
             }
         }
 
+        @media (max-width: 860px) {
+            .meet-founder .polaroid {
+                max-width: 420px;
+            }
+
+            .meet-founder__text {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .story-mid.square-grid,
+            .mission {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            .story-mid.square-grid > .square-block,
+            .mission > * {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .mission > div[aria-hidden="true"] {
+                display: none !important;
+            }
+
+            .mission-copy {
+                justify-self: stretch;
+            }
+        }
+
         @media (max-width: 640px) {
             .wrap {
                 width: min(100% - 18px, 1180px);
@@ -605,6 +636,38 @@
             .story p {
                 font-size: 0.98rem;
             }
+
+            .story-mid.square-grid,
+            .mission {
+                grid-template-columns: 1fr !important;
+                gap: 18px !important;
+            }
+
+            .story-mid.square-grid > .square-block,
+            .mission > * {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .story-mid.square-grid > .square-block {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .label-bar {
+                min-width: 0;
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .mission > div[aria-hidden="true"] {
+                display: none !important;
+            }
+
+            .mission-copy {
+                justify-self: stretch;
+            }
+
             /* Mobile navigation: hide nav and show toggle */
             .mobile-toggle {
                 display: block;
@@ -684,6 +747,20 @@
                 aspect-ratio: auto;
                 height: auto;
                 padding: 8px;
+            }
+
+            .mission {
+                margin-top: 28px !important;
+                margin-bottom: 40px !important;
+            }
+
+            .mission h2 {
+                font-size: clamp(1.6rem, 8vw, 2.4rem) !important;
+            }
+
+            .label-bar {
+                font-size: 1.2rem !important;
+                padding: 10px 16px !important;
             }
 
             .still-life,
